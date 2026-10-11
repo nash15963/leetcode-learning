@@ -1,0 +1,9 @@
+# 編譯產物與草稿
+tmp/*
+!tmp/.gitkeep
+*.dSYM/
+a.out
+
+# 系統 / 個人設定
+.DS_Store
+.claude/settings.local.json

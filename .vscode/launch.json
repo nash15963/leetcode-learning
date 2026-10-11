@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug current question",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/tmp/build/${fileDirnameBasename}",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "build current question"
+        }
+    ]
+}

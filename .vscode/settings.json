@@ -1,0 +1,11 @@
+{
+    "clangd.path": "/Library/Developer/CommandLineTools/usr/bin/clangd",
+    "clangd.arguments": ["--header-insertion=never"],
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
+    },
+    "files.associations": {
+        "*.hpp": "cpp"
+    }
+}
