@@ -16,27 +16,45 @@ using namespace std;
 
 // 用 for 迴圈印出 "1 2 3 4 5 6 7 8 9 10"，數字之間一個空白、最後換行
 void print1To10() {
-    // TODO: 實作
+    for (int i = 1; i <= 10; i++) {
+        cout << i;
+        if (i < 10) {
+            cout << " ";
+        }
+    }
+    cout << endl;
 }
 
 // 用 while 迴圈從 n 倒數印到 1，例如 n = 3 印出 "3 2 1" 再換行
 // n <= 0 時只印一個換行
 void printCountdown(int n) {
-    // TODO: 實作
+    while (0 < n) {
+        cout << n;
+        if (n > 1) {
+            cout << " ";
+        }
+        n--;
+    };
+    cout << endl;
 }
 
 // ===== Task B：1 加到 n 與 int 溢位 =====
 
 // 用迴圈計算 1 + 2 + ... + n（n <= 0 回傳 0）
 long long sumLoop(int n) {
-    // TODO: 實作
-    return 0;
+    long long tmp = 0;
+    for (int i = 1; i <= n; i++) {
+        tmp += i;
+    };
+    return tmp;
 }
 
 // 用公式 n * (n + 1) / 2 計算（n <= 0 回傳 0）
 long long sumFormula(int n) {
-    // TODO: 實作
-    return 0;
+    if (n <= 0) {
+        return 0;
+    };
+    return (long long)n * (n + 1) / 2;
 }
 
 // ===== Task C：FizzBuzz =====
@@ -44,8 +62,21 @@ long long sumFormula(int n) {
 // 回傳 1..n 的 FizzBuzz 結果：3 的倍數 "Fizz"、5 的倍數 "Buzz"、
 // 15 的倍數 "FizzBuzz"、其他就是數字本身（轉成字串）
 vector<string> fizzBuzz(int n) {
-    // TODO: 實作
-    return {};
+    vector<string> array = {};
+
+    for (int i = 1; i <= n; i++) {
+        if (i % 5 == 0 && i % 3 == 0) {
+            array.push_back("FizzBuzz");
+        } else if (i % 5 == 0) {
+            array.push_back("Buzz");
+        } else if (i % 3 == 0) {
+            array.push_back("Fizz");
+        } else {
+            string tmp = to_string(i);
+            array.push_back(tmp);
+        }
+    }
+    return array;
 }
 
 // ===== Task D：乘法表（setw 對齊）=====
@@ -53,21 +84,45 @@ vector<string> fizzBuzz(int n) {
 // 印出 n × n 乘法表：第 i 行第 j 個數字是 i * j，每個數字用 setw(4) 靠右對齊，
 // 每行結尾換行。n <= 0 時什麼都不印
 void printTable(int n) {
-    // TODO: 實作
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            cout << setw(4) << i * j;
+        };
+        cout << "\n";
+    };
 }
 
 // ===== Task E：讀到 EOF（ACM 模式暖身）=====
 
 // 從 in 一直讀整數直到讀不到為止，回傳總和
 long long sumAll(istream& in) {
-    // TODO: 實作
-    return 0;
+    int x = 0;
+
+    long long sum = 0;
+    while (in >> x) {
+        sum += x;
+    }
+
+    return sum;
 }
 
 // 輸入格式：第一行 T（測資筆數），接下來 T 行，每行開頭是 k，後面接 k 個整數
 // 對每筆測資，印出那 k 個整數的總和，一筆一行
 void solveCases(istream& in) {
-    // TODO: 實作
+    int t;
+    in >> t;
+    for (int c = 0; c < t; c++) {
+        int k;
+        in >> k;
+
+        long sum = 0;
+        for (int i = 0; i < k; i++) {
+            int x;
+            in >> x;
+            sum += x;
+        }
+        cout << sum << "\n";
+    }
 }
 
 int main() {

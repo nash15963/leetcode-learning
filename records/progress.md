@@ -8,7 +8,7 @@
 
 | # | 題目 | 重點 | 狀態 | 首次完成 | 嘗試次數 | 備註 |
 |---|---|---|---|---|---|---|
-| 001 | io-control-flow | 型別、溢位、迴圈、I/O | ⬜ | | 0 | |
+| 001 | io-control-flow | 型別、溢位、迴圈、I/O | ✅ | 2026-10-18 | 2 | B 溢位用 L2 提示修正；D、E 看答案學習 |
 | 002 | functions-refs | 參考、指標、pair | ⬜ | | 0 | |
 | 003 | string-char | string、char 運算 | ⬜ | | 0 | |
 | 004 | vector-array-slice | vector、切片、2D、前綴和 | ⬜ | | 0 | |
