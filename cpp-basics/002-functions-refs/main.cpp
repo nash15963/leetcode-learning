@@ -2,6 +2,7 @@
 // 執行：make run Q=002
 // 題目說明見 question.md
 
+#include <algorithm>
 #include <string>
 #include <utility>  // pair
 #include <vector>
@@ -14,90 +15,148 @@ using namespace std;
 
 // 用參考（reference）交換 a 和 b 的值
 void swapByRef(int& a, int& b) {
-    // TODO: 實作
+    int x = 0;
+    x = a;
+    a = b;
+    b = x;
 }
 
 // 用指標（pointer）交換 *a 和 *b 的值
 void swapByPtr(int* a, int* b) {
-    // TODO: 實作
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
 // ===== Task B：三種傳參方式 =====
 
 // 唯讀：回傳 nums 中「大於 k」的元素個數
 int countGreater(const vector<int>& nums, int k) {
-    // TODO: 實作
-    return 0;
+    int size = 0;
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        if (nums[i] > k) {
+            size++;
+        }
+    }
+    return size;
 }
 
 // 可修改：把 nums 每個元素都加上 delta（直接改呼叫端的 vector）
 void addToAll(vector<int>& nums, int delta) {
-    // TODO: 實作
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        nums[i] = nums[i] + delta;
+    }
 }
 
 // 傳值（複製一份）：回傳「每個元素都加上 delta」的新 vector，呼叫端原本的不能變
 vector<int> addedCopy(vector<int> nums, int delta) {
-    // TODO: 實作
-    return {};
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        nums[i] = nums[i] + delta;
+    }
+    return nums;
 }
 
 // ===== Task C：回傳 pair + structured binding =====
 
 // 回傳 {最小值, 最大值}（nums 至少有一個元素）
 pair<int, int> minMax(const vector<int>& nums) {
-    // TODO: 實作
-    return {};
+    int lo = nums[0];
+    int hi = nums[0];
+    int n = nums.size();
+    for (int i = 1; i < n; i++) {
+        lo = min(lo, nums[i]);
+        hi = max(hi, nums[i]);
+    }
+    pair<int, int> x = {lo, hi};
+
+    return x;
 }
 
 // 回傳 target 第一次與最後一次出現的 index；找不到回傳 {-1, -1}
 pair<int, int> firstLast(const vector<int>& nums, int target) {
-    // TODO: 實作
-    return {};
+    pair<int, int> x = {-1, -1};
+
+    int n = nums.size();
+    for (int i = 0; i < n; i++) {
+        if (nums[i] == target && x.first == -1) {
+            x.first = i;
+            x.second = i;
+        } else if (nums[i] == target && x.first != -1) {
+            x.second = i;
+        }
+    }
+
+    return x;
 }
 
 // ===== Task D：overload 與預設引數 =====
 
 // 三個同名函式（overload），各自回傳最大值
 int maxOf(int a, int b) {
-    // TODO: 實作
-    return 0;
+    return max(a, b);
 }
 
 int maxOf(int a, int b, int c) {
-    // TODO: 實作
-    return 0;
+    return max({a, b, c});
 }
 
 // nums 至少有一個元素
 int maxOf(const vector<int>& nums) {
-    // TODO: 實作
-    return 0;
+    int x = nums[0];
+    for (int i = 0; i < (int)nums.size(); i++) {
+        x = max(x, nums[i]);
+    }
+    return x;
 }
 
 // 把 s 重複 times 次，中間用 sep 隔開；times 預設 2、sep 預設空字串
 string repeatStr(const string& s, int times = 2, const string& sep = "") {
-    // TODO: 實作
-    return "";
+    string tmp = s;
+    int timeTmp = times - 1;
+    while (timeTmp > 0) {
+        tmp += sep;
+        tmp += s;
+        timeTmp--;
+    }
+
+    if (times <= 0) {
+        return "";
+    } else {
+        return tmp;
+    }
 }
 
 // ===== Task E：指標走訪陣列與 nullptr =====
 
 // 加總 [first, last) 範圍內的元素（last 指向最後一個元素的「下一格」）
 int sumRange(const int* first, const int* last) {
-    // TODO: 實作
-    return 0;
+    int sum = 0;
+    for (const int* p = first; p != last; p++) {
+        sum += *p;
+    }
+    return sum;
 }
 
 // 在 [first, last) 中找第一個等於 target 的元素，回傳指向它的指標；找不到回傳 nullptr
 const int* findPtr(const int* first, const int* last, int target) {
-    // TODO: 實作
-    return nullptr;
+    const int* ta = nullptr;
+    for (const int* p = first; p != last; p++) {
+        if (*p == target) {
+            return p;
+        }
+    }
+    return ta;
 }
 
 // p 不是 nullptr 就回傳 *p，否則回傳 fallback
 int valueOr(const int* p, int fallback) {
-    // TODO: 實作
-    return 0;
+    if (p != nullptr) {
+        return *p;
+    }
+    return fallback;
 }
 
 int main() {
