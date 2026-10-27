@@ -10,7 +10,7 @@
 |---|---|---|---|---|---|---|
 | 001 | io-control-flow | 型別、溢位、迴圈、I/O | ✅ | 2026-10-18 | 2 | B 溢位用 L2 提示修正；D、E 看答案學習 |
 | 002 | functions-refs | 參考、指標、pair | ✅ | 2026-10-25 | 1 | swapByPtr、addedCopy、sumRange、valueOr 看答案；指標觀念要複習 |
-| 003 | string-char | string、char 運算 | ⬜ | | 0 | |
+| 003 | string-char | string、char 運算 | ✅ | 2026-10-27 | 1 | canConstruct、reverseWords、addSmall 自己寫；isPalindrome、firstUniqChar、chunk、longestCommonPrefix、addStrings 看答案 |
 | 004 | vector-array-slice | vector、切片、2D、前綴和 | ⬜ | | 0 | |
 | 005 | stl-algorithms | sort、accumulate、二分 | ⬜ | | 0 | |
 | 006 | hash-containers | unordered_map/set、map/set | ⬜ | | 0 | |

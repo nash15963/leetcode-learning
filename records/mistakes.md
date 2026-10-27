@@ -6,14 +6,14 @@
 
 | 類別 | 說明 | 次數 |
 |---|---|---|
-| 溢位 | `int` 相乘 / 相加超過範圍、`accumulate` 初始值型別 | 2 |
+| 溢位 | `int` 相乘 / 相加超過範圍、`accumulate` 初始值型別 | 3 |
 | 無號數 | `size_t` 減到負數變超大數、`v.size() - 1` 在空 vector | 1 |
 | 越界 | index 超出範圍、對空容器呼叫 `top()` / `front()` / `back()` | 0 |
 | 指標 | 解參考 `nullptr`、斷鏈、忘記 `delete` / use-after-free | 1 |
 | 容器 | `map[key]` 自動插入、走訪時 erase 導致迭代器失效 | 0 |
 | 效能 | 傳值造成不必要的複製（該用 `const&`）、迴圈中重複計算 | 0 |
-| 邏輯 | 邊界條件、off-by-one、題意理解錯誤 | 6 |
-| 語法 | 少分號、變數名稱蓋掉 std 函式、符號寫錯位置 | 1 |
+| 邏輯 | 邊界條件、off-by-one、題意理解錯誤 | 7 |
+| 語法 | 少分號、變數名稱蓋掉 std 函式、符號寫錯位置 | 2 |
 
 ## 紀錄
 
@@ -78,3 +78,18 @@
 - ❌ 區域變數取名 `size`，再呼叫 `size(nums)` → `called object type 'int' is not a function`；`addToAll`、`repeatStr` 少分號
 - ✅ 換名字（`count`、`ans`）；每個敘述結尾加 `;`
 - 💡 變數名稱不要跟 std 函式撞名（`size`、`count`、`max`、`min`），`using namespace std;` 之後很容易衝突
+
+### 2026-10-27 · 003 · 邏輯 ⚠️
+- ❌ `reverseWords`：切好單字、接好字串，但忘了反轉順序（輸出和輸入一樣）
+- ✅ 串接前 `reverse(list.begin(), list.end());`，或從最後一個單字往前接
+- 💡 先把題目拆成步驟（切字 → 反轉 → 串接），寫完逐一對照每一步有沒有做到
+
+### 2026-10-27 · 003 · 語法 ⚠️
+- ❌ `for (string s : reverseList)`：迴圈變數 `s` 和參數 `s` 同名 → `-Wshadow` warning
+- ✅ 改名成 `word`，並用 `const string&` 避免複製
+- 💡 內層變數不要跟外層（參數、外層迴圈）取一樣的名字
+
+### 2026-10-27 · 003 · 溢位 ⚠️
+- ❌ `addSmall`：`to_string(stoi(a) + stoi(b))`，`int + int` 在 `"2147483647" + "1"` 時溢位（測試沒有涵蓋，目前程式碼仍是這樣）
+- ✅ `to_string(stoll(a) + stoll(b))`
+- 💡 每個值各自在 `int` 範圍內，不代表相加 / 相乘的結果也在範圍內
